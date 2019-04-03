@@ -9,5 +9,6 @@ This repository provides tools which I developed for the data alalysis. The tool
 - preparing data as input for other systems (e.g. Machine Leraning Frameworks)
 
 The first and most important is Reindexing tool. Why reindexing is needed for the datasets? The datasets containe 12K+ unique companies, 200K+ reports and 80M+ values (tags). Unfortunately the indexes used in the database (e.g. adsh, cik, tag name) are not easy to work with. E.g. adsh is a 20-character long and if you want to create a table in which eache value will be addressed individually you will not be able to fit the table into your computer memory. At the same time the number of unique adsh values is relatively small (200K+) which fits fine to almost every modern computer memory without any problems. 
-More details to be found in folder 01.Reindexing Tool
+More details to be found in folder 01. Reindexing.
+      
 
