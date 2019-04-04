@@ -12,3 +12,22 @@ The first and most important is Reindexing tool. Why is reindexing needed for th
 More details to be found in folder 01. Reindexing.
       
 
+To adanyze during Explore phase.
+sub.txt:
+- adsh
+- cik
+- sic
+- contryinc
+- changed (at least analyze year when the name was changed)
+- fye (Fiscal Year End Date)
+- form
+- fp
+- prevrpt
+- nciks
+
+num.txt:
+- tag
+- version
+- coreg (at least empty/non-empty)
+- qtrs
+- uom
