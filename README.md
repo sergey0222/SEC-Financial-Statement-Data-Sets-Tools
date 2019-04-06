@@ -8,19 +8,18 @@ This repository provides tools which I developed for the data alalysis. The tool
 - reindexing several fields for speeding up the calculations
 - presening the information in a specific format to feed to other sytems (e.g. machine learning frameworks)
 
-The first tool called Datsets_explorer runs through all the files and analyses the most important fields. The details can be found in the file itself. 
-Below you may find the current statistics for 2009q1 ... 2019q1 filings:
-Total number of reports (adsh): 235 179
-Total number of unique companies (cik): 12 521
-Number of different industries (sic): 435
-Number of countries of incorporation (countryinc): 56
-Number of different filing reports (form): 49
-Total number of unique tags in all reports (tag): 1 371 759
-Number of different Units of Measure (uom): 6 393
-Total number of lines in all sub.txt files: 235 179
-Total number of lines in all num.txt files: 87 753 960
+The first tool called Datsets_explorer runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
+- Total number of reports (adsh): 235 179
+- Total number of unique companies (cik): 12 521
+- Number of different industries (sic): 435
+- Number of countries of incorporation (countryinc): 56
+- Number of different filing reports (form): 49
+- Total number of unique tags in all reports (tag): 1 371 759
+- Number of different Units of Measure (uom): 6 393
+- Total number of lines in all sub.txt files: 235 179
+- Total number of lines in all num.txt files: 87 753 960
 
 A predefined file structure is used in all the tools to be consistent.
 The root folder to all the files is /Datasets folder on the local drive. Path to this folder is defined by the variable 'path'. E.g. in my case this is: path = 'D:/Datasets/'. The subfolders are:
-- /Datasets/Originals/ - original files from https://www.sec.gov/dera/data/financial-statement-data-sets.html unzipped to folders 2009q1, 2001q2...
+- /Datasets/Originals/ - original files from the link above unzipped to folders 2009q1, 2001q2...
 - /Datasets/Explore/ - the output of Explore mudule
