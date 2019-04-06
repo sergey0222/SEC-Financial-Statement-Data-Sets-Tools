@@ -4,30 +4,23 @@ Tools for working with U.S. Securities and Exchange Commission Financial Stateme
 U.S. Securities and Exchange Commission (SEC) provides numeric information from all the financial statements filed to the commission since January 2009. The link to the datasets is here: https://www.sec.gov/dera/data/financial-statement-data-sets.html
 
 This repository provides tools which I developed for the data alalysis. The tools are used for:
-- getting statistics of different kind (number of companies, filings, tags for particular years, etc.)
-- analyzing which tags (values) are present in a given set of reports
-- preparing data as input for other systems (e.g. Machine Leraning Frameworks)
+- getting statistics of different kind (number of companies, filings, tags, etc.)
+- reindexing several fields for speeding up the calculations
+- presening the information in a specific format to feed to other sytems (e.g. machine learning frameworks)
 
-The first and most important is Reindexing tool. Why is reindexing needed for the datasets? The datasets containe 12K+ unique companies, 200K+ reports and 80M+ values (tags). Unfortunately the indexes used in the database (e.g. adsh, cik, tag name) are not easy to work with. E.g. adsh is a 20-character long and if you want to create a table in which eache value will be addressed individually you will not be able to fit the table into your computer memory. At the same time the number of unique adsh values is relatively small (200K+) which fits fine to almost every modern computer memory without any problems. 
-More details to be found in folder 01. Reindexing.
-      
+The first tool called Datsets_explorer runs through all the files and analyses the most important fields. The details can be found in the file itself. 
+Below you may find the current statistics for 2009q1 ... 2019q1 filings:
+Total number of reports (adsh): 235 179
+Total number of unique companies (cik): 12 521
+Number of different industries (sic): 435
+Number of countries of incorporation (countryinc): 56
+Number of different filing reports (form): 49
+Total number of unique tags in all reports (tag): 1 371 759
+Number of different Units of Measure (uom): 6 393
+Total number of lines in all sub.txt files: 235 179
+Total number of lines in all num.txt files: 87 753 960
 
-To adanyze during Explore phase.
-sub.txt:
-- adsh
-- cik
-- sic
-- contryinc
-- changed (at least analyze year when the name was changed)
-- fye (Fiscal Year End Date)
-- form
-- fp
-- prevrpt
-- nciks
-
-num.txt:
-- tag
-- version
-- coreg (at least empty/non-empty)
-- qtrs
-- uom
+A predefined file structure is used in all the tools to be consistent.
+The root folder to all the files is /Datasets folder on the local drive. Path to this folder is defined by the variable 'path'. E.g. in my case this is: path = 'D:/Datasets/'. The subfolders are:
+- /Datasets/Originals/ - original files from https://www.sec.gov/dera/data/financial-statement-data-sets.html unzipped to folders 2009q1, 2001q2...
+- /Datasets/Explore/ - the output of Explore mudule
