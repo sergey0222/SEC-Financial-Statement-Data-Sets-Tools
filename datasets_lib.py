@@ -43,7 +43,7 @@ def index_by_tree (string, dictionary, next_available_index):
 def list_to_file (list, full_path):
     
     '''
-    Saves a list of strings to a csv file with 1 element per row
+    Saves a list of strings to a tab-delimited csv file
     Input:  
     list - a list to be saved
     full_path - a string specifing a full path to a file 
@@ -53,7 +53,6 @@ def list_to_file (list, full_path):
         f_object = csv.writer(f, delimiter='\t')
         for i in range(len(list)):
             f_object.writerow(list[i])
-
 
 def list_from_file (full_path):
     '''
@@ -72,5 +71,20 @@ def list_from_file (full_path):
             list.append(row[0])
     return list
 
-
+def list_of_lists_from_file (full_path):
+    '''
+    Reads a list of lists from a csv file
+    
+    Input: 
+    full_path - a string specifing a full path to a file 
+    
+    Output:
+    list - list with the data loaded from the file
+    '''
+    list = []
+    with open(full_path) as f:
+        f_object = csv.reader(f, delimiter='\t')
+        for row in f_object:
+            list.append(row)
+    return list
 

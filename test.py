@@ -2,10 +2,15 @@
 import csv
 import datasets_lib as ds
 
-list_out = ['1','2','3','4','5','6']
-ds.list_to_file(list_out,"test.txt")
+list_test = []
+dic_test = {}
+next_ind_test = 0
 
-list_in = ds.list_from_file('test.txt')
-print(list_in)
-
+for j in range(5):
+    test = ''
+    ind, next_ind_test = ds.index_by_tree(test, dic_test, next_ind_test)
+    if ind == len(list_test):
+        list_test.append([1,test])
+    else:
+        list_test[ind][0] += 1
 
