@@ -21,5 +21,5 @@ The first tool called Datsets_explorer runs through all the files and analyses t
 
 A predefined file structure is used in all the tools to be consistent.
 The root folder to all the files is /Datasets folder on the local drive. Path to this folder is defined by the variable 'path'. E.g. in my case this is: path = 'D:/Datasets/'. The subfolders are:
-- /Datasets/Originals/ - original files from the link above unzipped to folders 2009q1, 2001q2...
+- /Datasets/Originals/ - original files from the link above unzipped to folders 2009q1, 2009q2 ...
 - /Datasets/Explore/ - the output of Explore mudule
