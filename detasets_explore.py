@@ -221,6 +221,23 @@ for i in range(len(folders)):
 
             lines_in_num += 1                 
 
+# save all the lists to files
+ds.list_to_file (list_adsh, path + 'Explore/list_adsh.txt')
+ds.list_to_file (list_cik, path + 'Explore/list_cik.txt')
+ds.list_to_file (list_sic, path + 'Explore/list_sic.txt')
+ds.list_to_file (list_countryinc, path + 'Explore/list_countryinc.txt')
+ds.list_to_file (list_changed_year, path + 'Explore/list_changed_year.txt')
+ds.list_to_file (list_fye, path + 'Explore/list_fye.txt')
+ds.list_to_file (list_form, path + 'Explore/list_form.txt')
+ds.list_to_file (list_fp, path + 'Explore/list_fp.txt')
+ds.list_to_file (list_prevrpt, path + 'Explore/list_prevrpt.txt')
+ds.list_to_file (list_nciks, path + 'Explore/list_nciks.txt')
+ds.list_to_file (list_tag, path + 'Explore/list_tag.txt')
+ds.list_to_file (list_version, path + 'Explore/list_version.txt')
+ds.list_to_file (list_coreg, path + 'Explore/list_coreg.txt')
+ds.list_to_file (list_qtrs, path + 'Explore/list_qtrs.txt')
+ds.list_to_file (list_uom, path + 'Explore/list_uom.txt')
+
 # print statistics
 print('Total number of reports (adsh):',len(list_adsh))
 print('Total number of unique companies (cik):', len(list_cik))
