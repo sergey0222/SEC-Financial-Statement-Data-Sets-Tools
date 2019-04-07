@@ -221,21 +221,50 @@ for i in range(len(folders)):
 
             lines_in_num += 1                 
 
-# save all the lists to files
+# sort lists in desending order and save to files
+list_adsh.sort(reverse = True)            
 ds.list_to_file (list_adsh, path + 'Explore/list_adsh.txt')
+
+list_cik.sort(reverse = True) 
 ds.list_to_file (list_cik, path + 'Explore/list_cik.txt')
+
+list_sic.sort(reverse = True) 
 ds.list_to_file (list_sic, path + 'Explore/list_sic.txt')
+
+list_countryinc.sort(reverse = True) 
 ds.list_to_file (list_countryinc, path + 'Explore/list_countryinc.txt')
+
+list_changed_year.sort(reverse = True) 
 ds.list_to_file (list_changed_year, path + 'Explore/list_changed_year.txt')
+
+list_fye.sort(reverse = True) 
 ds.list_to_file (list_fye, path + 'Explore/list_fye.txt')
+
+list_form.sort(reverse = True) 
 ds.list_to_file (list_form, path + 'Explore/list_form.txt')
+
+list_fp.sort(reverse = True) 
 ds.list_to_file (list_fp, path + 'Explore/list_fp.txt')
+
+list_prevrpt.sort(reverse = True) 
 ds.list_to_file (list_prevrpt, path + 'Explore/list_prevrpt.txt')
+
+list_nciks.sort(reverse = True) 
 ds.list_to_file (list_nciks, path + 'Explore/list_nciks.txt')
+
+list_tag.sort(reverse = True) 
 ds.list_to_file (list_tag, path + 'Explore/list_tag.txt')
+
+list_version.sort(reverse = True) 
 ds.list_to_file (list_version, path + 'Explore/list_version.txt')
+
+list_coreg.sort(reverse = True) 
 ds.list_to_file (list_coreg, path + 'Explore/list_coreg.txt')
+
+list_qtrs.sort(reverse = True) 
 ds.list_to_file (list_qtrs, path + 'Explore/list_qtrs.txt')
+
+list_uom.sort(reverse = True) 
 ds.list_to_file (list_uom, path + 'Explore/list_uom.txt')
 
 # print statistics
