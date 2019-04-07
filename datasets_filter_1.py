@@ -15,9 +15,25 @@ csv.field_size_limit(10000000)
 
 path = 'D:/DataSets/'
 
+# load index_adsh.txt
+list_adsh = ds.list_from_file(path + 'Reindexed/index_adsh.txt')
+
+# create empty list which contain fp field for all adsh
+fp_list = [''] * len(list_adsh)
+
+with open(path + 'Reindexed/reindexed_sub.txt') as reindexed_sub:
+    reindexed_sub_object = csv.reader(reindexed_sub, delimiter='\t')
+    
+    for row in reindexed_sub_object:
+        
+        adsh = row[0]
+        fp = row[28]
+        
+        fp_list[int(adsh)] = fp
+
 # initialize counters
-line_original = 0
-line_filtered = 0
+lines_original = 0
+lines_filtered = 0
 
 with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
     filter_1_num_object = csv.writer(filter_1_num, delimiter='\t')
@@ -27,8 +43,9 @@ with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
         
         for row in reindexed_num_object:
 
-            line_original += 1
+            lines_original += 1
             
+            adsh = row[0]
             version = row[2]
             coreg = row[3]
             ddate = row[4]
@@ -36,15 +53,15 @@ with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
             uom = row[6]
             value = row[7]
             
-            if version[0:7] == 'us-gaap' and coreg != '' and ddate[4:8] == '1231' and value != '':
+            if version[0:7] == 'us-gaap' and coreg == '' and ddate[4:8] == '1231' and value != '' and fp_list[int(adsh)] == 'FY':
                 if qtrs == '0' or qtrs == '4':
                     if uom == 'USD' or uom == 'shares':
                         filter_1_num_object.writerow(row)
-                        line_filtered += 1
+                        lines_filtered += 1
 
 # print statistics
-print('Number of lines in the original file', line_original)
-print('Number of lines in the filtered file', line_filtered)
+print('Number of lines in the original file', lines_original)
+print('Number of lines in the filtered file', lines_filtered)
 
 # processing time
 print('time elapsed - ', datetime.datetime.now() - time_start)
