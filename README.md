@@ -25,5 +25,5 @@ Datasets - root folder (pointed by variable 'path')
 - Originals - original files from the link above unzipped to folders 2009q1, 2009q2 ...
 - Explore - the output of Explore mudule
 - Reindexed - reindexed dataset files
-- Filter_1 - files are applying filter datasets_filter_1 (see details in the module itself)
+- Filter_1 - files after applying filter datasets_filter_1 (see details in the module itself)
 
