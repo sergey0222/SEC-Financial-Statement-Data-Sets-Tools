@@ -52,7 +52,7 @@ def list_to_file (list, full_path):
     with open(full_path, 'w', newline='') as f:
         f_object = csv.writer(f, delimiter='\t')
         for i in range(len(list)):
-            f_object.writerow(list[i])
+            f_object.writerow([list[i]])
 
 def list_from_file (full_path):
     '''
