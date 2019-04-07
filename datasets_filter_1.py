@@ -25,7 +25,6 @@ time_start = datetime.datetime.now()
 csv.field_size_limit(10000000) 
 
 # set path to folder Datasets/
-
 path = 'D:/DataSets/'
 
 # the folowing part constructs report_bool adn report_adsh matrixes with similar dimensions:
@@ -45,6 +44,9 @@ list_adsh = ds.list_from_file(path + 'reindexed/index_adsh.txt')
 # initialize matrixes
 report_bool = np.zeros((len(list_cik),end-start+1), dtype=bool)
 report_adsh = np.zeros((len(list_cik),end-start+1), dtype=int)
+
+# this list will remember the year for a given adsh
+adsh_year = [''] * len(list_adsh)
 
 # fills in both matrixes
 with open(path + '/reindexed/reindexed_sub.txt') as f:
@@ -70,6 +72,8 @@ with open(path + '/reindexed/reindexed_sub.txt') as f:
             # mark corresponding combination of cik and year as eligible
             report_bool[r,c] = True
             report_adsh[r,c] = int(adsh)
+            
+            adsh_year[int(adsh)] = fy 
 
 
 # count how many companies have FY reports in the indicated year range
@@ -137,7 +141,7 @@ with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
             uom = row[6]
             value = row[7]
             
-            if elig_adsh[int(adsh)] and version[0:7] == 'us-gaap' and coreg == '' and ddate[4:8] == '1231' and value != '':
+            if elig_adsh[int(adsh)] and version[0:7] == 'us-gaap' and coreg == '' and ddate[0:4] == adsh_year[int(adsh)] and ddate[4:8] == '1231' and value != '':
                 if qtrs == '0' or qtrs == '4':
                     if uom == 'USD' or uom == 'shares':
                         filter_1_num_object.writerow(row)
@@ -163,8 +167,8 @@ with open(path + 'filter_1/filter_1_sub.txt', 'w', newline='') as filter_1_sub:
                 lines_sub_filtered += 1
                 
 # writes report_adsh into report_adsh.h5 
-with h5.File(path + '/filter_1/report_adsh.h5', 'w') as hf:
-    hf.create_dataset('report_adsh',  data = report_adsh)              
+with h5.File(path + '/filter_1/elig_adsh_ind.h5', 'w') as hf:
+    hf.create_dataset('elig_adsh_ind',  data = elig_adsh_ind)              
             
 # print statistics
 print('Number of filtered/original lines sub files:', lines_sub_filtered, lines_sub_original)
