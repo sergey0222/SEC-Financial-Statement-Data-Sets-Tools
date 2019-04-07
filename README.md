@@ -20,9 +20,10 @@ The first tool called datsets_explorer runs through all the files and analyses t
 - Total number of lines in all num.txt files: 87 753 960
 
 A predefined file structure is used in all tools to be consistent:
-/Datasets - root folder
--- /Originals - original files from the link above unzipped to folders 2009q1, 2009q2 ...
--- /Explore - the output of Explore mudule
--- /Reindexed
-The root folder for the file structure is /Datasets on the local drive. Path to this folder is defined by the variable 'path'. E.g. in my case this is: path = 'D:/Datasets/'. The subfolders are:
+
+Datasets - root folder (pointed by variable 'path')
+- Originals - original files from the link above unzipped to folders 2009q1, 2009q2 ...
+- Explore - the output of Explore mudule
+- Reindexed - reindexed dataset files
+
 
