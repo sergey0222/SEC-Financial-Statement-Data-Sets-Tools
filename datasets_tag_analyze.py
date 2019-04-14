@@ -1,4 +1,4 @@
-# Calculates how much tags are missing in the eligible reports
+# gets statistics on how often different tags are used in pre-filtered reports
 
 import datetime
 import csv
@@ -12,10 +12,13 @@ time_start = datetime.datetime.now()
 path = 'D:/DataSets/'
 
 # initialize tag_count list for counting tags
-list_tag=ds.list_from_file(path+'/reindexed/index_tag.txt')
+index_tag=ds.list_from_file(path+'/reindexed/index_tag.txt')
 tag_count = []
-for i in range(len(list_tag)):
+
+for i in range(len(index_tag)):
     tag_count.append([0,i])
+
+# create adsh_count for counting eligible adsh
   
 # collect tag's statistics
 with open(path + 'filter_1/filter_1_num.txt') as f:
@@ -33,7 +36,7 @@ elig_reports = len(elig_adsh_ind)
 
 for i in range(20):
     tag = tag_count[i][1]
-    tag_name = list_tag[tag]
+    tag_name = index_tag[tag]
     percent = round(tag_count[i][0] / elig_reports * 100, 0)
     print(percent, '% of reports contain tag',tag_name)
     

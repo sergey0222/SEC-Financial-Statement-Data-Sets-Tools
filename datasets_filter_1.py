@@ -73,8 +73,7 @@ with open(path + '/reindexed/reindexed_sub.txt') as f:
             report_bool[r,c] = True
             report_adsh[r,c] = int(adsh)
             
-            adsh_year[int(adsh)] = fy 
-
+            adsh_year[int(adsh)] = fy
 
 # count how many companies have FY reports in the indicated year range
 
