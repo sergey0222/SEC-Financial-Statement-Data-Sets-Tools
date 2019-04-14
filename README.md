@@ -25,6 +25,7 @@ Currently the list of tools is as follows:
 - datasets_filter_1 - filters out unneeded records accordning to the set of rules (see details in the module itself)
 - datasets_lib - provides functions often used in the tools
 - datasets_tag_analyze - gets statistics on how often different tags are used in pre-filtered reports
+- datasets_tag_missing_adsh - returns a list of adshs which do NOT contain a given tag for a prefiltered set
 
 A predefined file structure is used in all tools to be consistent:
 
