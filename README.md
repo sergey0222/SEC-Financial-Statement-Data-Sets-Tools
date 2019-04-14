@@ -19,17 +19,17 @@ The first tool called datsets_explorer runs through all the files and analyses t
 - Total number of lines in all sub.txt files: 235 179
 - Total number of lines in all num.txt files: 87 753 960
 
-A predefined file structure is used in all tools to be consistent:
-
-Datasets - root folder (pointed by variable 'path')
-- Originals - original files from the link above unzipped to folders 2009q1, 2009q2 ...
-- Explore - the output of Explore mudule
-- Reindexed - reindexed dataset files
-- Filter_1 - files after applying filter datasets_filter_1 (see details in the module itself)
-
 Currently the list of tools is as follows:
 - datasets_explore - gets statistics for most of the data fields
 - datasets_reindex - reindexes several fields to greatly speed up future processing
 - datasets_filter_1 - filters out unneeded records accordning to the set of rules (see details in the module itself)
 - datasets_lib - provides functions often used in the tools
 - datasets_tag_analyze - gets statistics on how often different tags are used in pre-filtered reports
+
+A predefined file structure is used in all tools to be consistent:
+
+Datasets - root folder pointed to by variable 'path'
+- Datasets\Originals - original files from the link above unzipped to folders 2009q1, 2009q2 ...
+- Datasets\Explore - the output of Explore mudule
+- Datasets\Reindexed - reindexed dataset files
+- Datasets\Filter_1 - files after applying filter datasets_filter_1 (see details in the module itself)
