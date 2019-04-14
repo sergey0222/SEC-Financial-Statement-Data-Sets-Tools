@@ -27,3 +27,9 @@ Datasets - root folder (pointed by variable 'path')
 - Reindexed - reindexed dataset files
 - Filter_1 - files after applying filter datasets_filter_1 (see details in the module itself)
 
+Currently the list of tools is as follows:
+- datasets_explore - gets statistics for most of the data fields
+- datasets_reindex - reindexes several fields to greatly speed up future processing
+- datasets_filter_1 - filters out unneeded records accordning to the set of rules (see details in the module itself)
+- datasets_lib - provides functions often used in the tools
+- datasets_tag_analyze - gets statistics on how often different tags are used in pre-filtered reports
