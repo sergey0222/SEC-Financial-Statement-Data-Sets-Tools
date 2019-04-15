@@ -36,3 +36,4 @@ Datasets - root folder pointed to by variable 'path'
 - Datasets\Explore - the output of Explore mudule
 - Datasets\Reindexed - reindexed dataset files
 - Datasets\Filter_1 - files after applying filter datasets_filter_1 (see details in the module itself)
+- Datasets\other - output of some smaller modules
