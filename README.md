@@ -8,7 +8,7 @@ This repository provides tools which I developed for the data alalysis. The tool
 - reindexing several fields for speeding up the calculations
 - presening the information in a specific format to feed to other sytems (e.g. machine learning frameworks)
 
-The first tool called datsets_explore runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
+The first tool called datasets_explore runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
 - total number of reports (adsh): 235179
 - total number of unique companies (cik): 12521
 - number of different industries (sic): 435
