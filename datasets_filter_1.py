@@ -115,6 +115,9 @@ elig_adsh_ind = np.extract(mask2D, report_adsh_cut)
 elig_adsh = np.zeros((len(list_adsh),1), dtype = bool)
 elig_adsh[elig_adsh_ind] = True
 
+# initialize eligh_adsh_2 to mark as eligible only those adsh which are in alig_adsh PLUS have valid tags
+elig_adsh_2 = np.zeros((len(list_adsh),1), dtype = bool)
+
 # creates filter_1_num.txt with relevant lines only
 
 # initialize counters
@@ -145,6 +148,9 @@ with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
                     if uom == 'USD' or uom == 'shares':
                         filter_1_num_object.writerow(row)
                         lines_num_filtered += 1
+                        
+                        # mark corresponding adsh as eligible in elig_adsh_2
+                        elig_adsh_2[int(adsh)] = True
 
 # creates filter_1_sub.txt with relevant lines only
                         
@@ -161,17 +167,18 @@ with open(path + 'filter_1/filter_1_sub.txt', 'w', newline='') as filter_1_sub:
         for row in reindexed_sub_object:
             lines_sub_original += 1
             adsh = row[0]
-            if elig_adsh[int(adsh)]:
+            if elig_adsh_2[int(adsh)]:
                 filter_1_sub_object.writerow(row)
                 lines_sub_filtered += 1
                 
-# writes report_adsh into report_adsh.h5 
-with h5.File(path + '/filter_1/elig_adsh_ind.h5', 'w') as hf:
-    hf.create_dataset('elig_adsh_ind',  data = elig_adsh_ind)              
+# creates elig_adsh_list.h5 
+elig_adsh_2_ind = np.nonzero(elig_adsh_2)[0]
+with h5.File(path + '/filter_1/elig_adsh_list.h5', 'w') as hf:
+    hf.create_dataset('elig_adsh_list',  data = elig_adsh_2_ind)              
             
 # print statistics
-print('Number of filtered/original lines sub files:', lines_sub_filtered, lines_sub_original)
-print('Number of filtered/original lines num files:', lines_num_filtered, lines_num_original)
+print('Number of filtered/original lines in sub files:', lines_sub_filtered, lines_sub_original)
+print('Number of filtered/original lines in num files:', lines_num_filtered, lines_num_original)
 
 # processing time
 print('time elapsed - ', datetime.datetime.now() - time_start)

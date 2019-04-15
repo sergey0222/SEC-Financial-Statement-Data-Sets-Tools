@@ -13,7 +13,7 @@ time_start = datetime.datetime.now()
 path = 'D:/DataSets/'
 
 # given tag as original string
-tag_to_look = 'Assets' 
+tag_to_look = 'NetIncomeLoss' 
 
 # load index_tag
 index_tag=ds.list_from_file(path+'/reindexed/index_tag.txt')
@@ -25,9 +25,7 @@ tag_to_look_int = index_tag.index(tag_to_look)
 index_adsh=ds.list_from_file(path+'/reindexed/index_adsh.txt')
 
 # create an array for marking adshs
-# column 0 = True if this adsh is in fliter_1_num.txt file
-# column 1 = True if rag_original is present in this adsh
-adsh_mark = np.zeros((len(index_adsh),2), dtype = bool)
+adsh_mark = np.zeros((len(index_adsh),1), dtype = bool)
   
 # collect adsh statistics
 with open(path + 'filter_1/filter_1_num.txt') as f:
@@ -36,21 +34,29 @@ with open(path + 'filter_1/filter_1_num.txt') as f:
             
             adsh_int = int(row[0])
             tag_int = int(row[1])
-            
-            # mark this adsh as present
-            adsh_mark[adsh_int,0] = True
 
             # is it the tag we are looking for?
             if tag_int == tag_to_look_int:
                 # if yes, mark corresponding adsh as used
-                adsh_mark[adsh_int,1] = True
+                adsh_mark[adsh_int,0] = True
 
+# load elig_adsh_list
+with h5.File(path + 'filter_1/elig_adsh_list.h5', 'r') as hf:
+    elig_adsh_list = hf['elig_adsh_list'][:]                
 
+# create a mask of eligible adsh
+elig_adsh_mask =  np.zeros((len(index_adsh),1), dtype = bool) 
+elig_adsh_mask[elig_adsh_list] = True
+  
 # create a vector with True for adsh which we are looking for
-missing_adsh_bool = np.logical_and(adsh_mark[:,0], np.invert(adsh_mark[:,1]))               
+adsh_mark_inv = np.invert(adsh_mark)
+missing_adsh_bool = np.logical_and(elig_adsh_mask, adsh_mark_inv)
 
 # extract adsh indexes
 missing_adsh_list = np.nonzero(missing_adsh_bool)[0]
+
+print('Number of adsh in wich tag', tag_to_look, 'is missing is:',len(missing_adsh_list))
+print('First 20 entries of the list:')
 print(missing_adsh_list[0:20])
         
 # processing time

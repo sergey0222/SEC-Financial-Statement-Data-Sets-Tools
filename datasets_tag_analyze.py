@@ -29,10 +29,10 @@ with open(path + 'filter_1/filter_1_num.txt') as f:
            
 tag_count.sort(reverse = True)
 
-# load elig_adsh_ind list and calculate total number of eligible reports
-with h5.File(path + '/filter_1/elig_adsh_ind.h5', 'r') as hf:
-    elig_adsh_ind = hf['elig_adsh_ind'][:]
-elig_reports = len(elig_adsh_ind)
+# load elig_adsh_list and calculate total number of eligible reports
+with h5.File(path + '/filter_1/elig_adsh_list.h5', 'r') as hf:
+    elig_adsh_list = hf['elig_adsh_list'][:]
+elig_reports = len(elig_adsh_list)
 
 for i in range(20):
     tag = tag_count[i][1]
