@@ -9,15 +9,16 @@ This repository provides tools which I developed for the data alalysis. The tool
 - presening the information in a specific format to feed to other sytems (e.g. machine learning frameworks)
 
 The first tool called datsets_explorer runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
-- Total number of reports (adsh): 235 179
-- Total number of unique companies (cik): 12 521
-- Number of different industries (sic): 435
-- Number of countries of incorporation (countryinc): 56
-- Number of different filing reports (form): 49
-- Total number of unique tags in all reports (tag): 1 371 759
-- Number of different Units of Measure (uom): 6 393
-- Total number of lines in all sub.txt files: 235 179
-- Total number of lines in all num.txt files: 87 753 960
+Total number of reports (adsh): 235179
+Total number of unique companies (cik): 12521
+Number of different industries (sic): 435
+Number of countries of incorporation (countryinc): 56
+Number of different filing reports (form): 49
+Total number of unique tags in all reports (tag): 1371759
+Total number of unique co-registrants (coreg): 35762
+Number of different Units of Measure (uom): 6393
+Total number of lines in all sub.txt files: 235179
+Total number of lines in all num.txt files: 87753960
 
 Currently the list of tools is as follows:
 - datasets_explore - gets statistics for most of the data fields
@@ -26,6 +27,7 @@ Currently the list of tools is as follows:
 - datasets_lib - provides functions often used in the tools
 - datasets_tag_analyze - gets statistics on how often different tags are used in pre-filtered reports
 - datasets_tag_missing_adsh - returns a list of adshs which do NOT contain a given tag for a prefiltered set
+- datasets_all_tags_for_adsh - returns a list of all tags in a given adsh
 
 A predefined file structure is used in all tools to be consistent:
 
