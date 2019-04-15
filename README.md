@@ -9,16 +9,16 @@ This repository provides tools which I developed for the data alalysis. The tool
 - presening the information in a specific format to feed to other sytems (e.g. machine learning frameworks)
 
 The first tool called datsets_explorer runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
-Total number of reports (adsh): 235179
-Total number of unique companies (cik): 12521
-Number of different industries (sic): 435
-Number of countries of incorporation (countryinc): 56
-Number of different filing reports (form): 49
-Total number of unique tags in all reports (tag): 1371759
-Total number of unique co-registrants (coreg): 35762
-Number of different Units of Measure (uom): 6393
-Total number of lines in all sub.txt files: 235179
-Total number of lines in all num.txt files: 87753960
+- total number of reports (adsh): 235179
+- total number of unique companies (cik): 12521
+- number of different industries (sic): 435
+- number of countries of incorporation (countryinc): 56
+- number of different filing reports (form): 49
+- total number of unique tags in all reports (tag): 1371759
+- total number of unique co-registrants (coreg): 35762
+- number of different Units of Measure (uom): 6393
+- total number of lines in all sub.txt files: 235179
+- total number of lines in all num.txt files: 87753960
 
 Currently the list of tools is as follows:
 - datasets_explore - gets statistics for most of the data fields
