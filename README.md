@@ -28,6 +28,7 @@ Currently the list of tools is as follows:
 - datasets_tag_analyze - gets statistics on how often different tags are used in pre-filtered reports
 - datasets_tag_missing_adsh - returns a list of adshs which do NOT contain a given tag for a prefiltered set
 - datasets_all_tags_for_adsh - returns a list of all tags in a given adsh
+- datasets_show_adsh_details - prints details for a given adsh including links to SEC site
 
 A predefined file structure is used in all tools to be consistent:
 
