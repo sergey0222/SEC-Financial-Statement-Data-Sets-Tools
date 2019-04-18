@@ -6,7 +6,7 @@ U.S. Securities and Exchange Commission (SEC) provides numeric information from 
 This repository provides tools which I developed for the data alalysis. The tools are used for:
 - getting statistics of different kind (number of companies, filings, tags, etc.)
 - reindexing several fields for speeding up the calculations
-- presening the information in a specific format to feed to other systems (e.g. machine learning frameworks)
+- presening the information in a specific format to feed to other systems (e.g. here: https://github.com/sergey0222/Neural-Networks-and-Value-Investing)
 
 The first tool called datasets_explore runs through all the files and analyses the most important fields. The details can be found in the file itself. Below you may find the current statistics for 2009q1 ... 2019q1 filings:
 - total number of reports (adsh): 235179
