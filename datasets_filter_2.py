@@ -1,14 +1,15 @@
 '''
-This filter module looks through all lines in reindexed_sub.txt & reindexed_num.txt and extracts only those for which the following is true::
+Filter_2 is based on Filter_1 but it does not expects that all Full Year reports exist in a given range,
+it looks through all lines in reindexed_sub.txt & reindexed_num.txt and extracts only those for which the following is true::
 - fiscal year ends on Dec 31
 - report is 10-K
 - tag belongs to us-gaap taxonomy
 - data relates to point in time (qtrs=0) or to 4 quartes (qtrs=4)
 - unit of measure is USD or Shares
-- full year reports exist for all years starting from 'first' and ending with 'last'
-The following files are saved in /filter_1 folder:
-- filter_1_sub.txt
-- filter_1_num.txt
+
+The following files are saved in /filter_2 folder:
+- filter_2_sub.txt
+- filter_2_num.txt
 - report_adsh.h5 (see description below)   
 
 '''
@@ -103,19 +104,20 @@ report_bool_cut = report_bool[:,first - start : last - start + 1]
 report_adsh_cut = report_adsh[:,first - start : last - start + 1]
 
 # define ciks for which all FY reports in a given range exist
-mask1D = np.all(report_bool_cut, axis=1, keepdims = True)
+#mask1D = np.all(report_bool_cut, axis=1, keepdims = True)
 
 # creates mask for extracting eligible adsh
-mask2D = np.logical_and(report_bool_cut, mask1D)
+#mask2D = np.logical_and(report_bool_cut, mask1D)
 
 # extract all eligible adsh into an array
-elig_adsh_ind = np.extract(mask2D, report_adsh_cut)
+#elig_adsh_ind = np.extract(mask2D, report_adsh_cut)
+elig_adsh_ind = np.extract(report_bool_cut, report_adsh_cut)
 
 # creates a list of all adsh with the relevant ones being True
 elig_adsh = np.zeros((len(list_adsh),1), dtype = bool)
 elig_adsh[elig_adsh_ind] = True
 
-# initialize eligh_adsh_2 to mark as eligible only those adsh which are in alig_adsh PLUS have valid tags
+# initialize eligh_adsh_2 to mark as eligible only those adsh which are in elig_adsh PLUS have valid tags
 elig_adsh_2 = np.zeros((len(list_adsh),1), dtype = bool)
 
 # creates filter_1_num.txt with relevant lines only
@@ -125,7 +127,7 @@ lines_num_original = 0
 lines_num_filtered = 0
 
 print('Sorting out tags...')
-with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
+with open(path + 'Filter_2/filter_2_num.txt', 'w', newline='') as filter_1_num:
     filter_1_num_object = csv.writer(filter_1_num, delimiter='\t')
 
     with open(path + 'Reindexed/reindexed_num.txt') as reindexed_num:
@@ -158,7 +160,7 @@ with open(path + 'Filter_1/filter_1_num.txt', 'w', newline='') as filter_1_num:
 lines_sub_original = 0
 lines_sub_filtered = 0                        
                         
-with open(path + 'filter_1/filter_1_sub.txt', 'w', newline='') as filter_1_sub:
+with open(path + 'filter_2/filter_2_sub.txt', 'w', newline='') as filter_1_sub:
     filter_1_sub_object = csv.writer(filter_1_sub, delimiter='\t')
 
     with open(path + 'reindexed/reindexed_sub.txt') as reindexed_sub:
@@ -173,7 +175,7 @@ with open(path + 'filter_1/filter_1_sub.txt', 'w', newline='') as filter_1_sub:
                 
 # creates elig_adsh_list.h5 
 elig_adsh_2_ind = np.nonzero(elig_adsh_2)[0]
-with h5.File(path + '/filter_1/elig_adsh_list.h5', 'w') as hf:
+with h5.File(path + '/filter_2/elig_adsh_list.h5', 'w') as hf:
     hf.create_dataset('elig_adsh_list',  data = elig_adsh_2_ind)              
             
 # print statistics

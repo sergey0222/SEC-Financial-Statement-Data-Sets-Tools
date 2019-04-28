@@ -26,7 +26,7 @@ with open(path + 'filter_1/filter_1_num.txt') as f:
         for row in f_object:
            tag = row[1]
            tag_count[int(tag)][0] += 1
-           
+       
 tag_count.sort(reverse = True)
 
 # load elig_adsh_list and calculate total number of eligible reports
@@ -34,12 +34,12 @@ with h5.File(path + '/filter_1/elig_adsh_list.h5', 'r') as hf:
     elig_adsh_list = hf['elig_adsh_list'][:]
 elig_reports = len(elig_adsh_list)
 
-for i in range(20):
+for i in range(50):
     tag = tag_count[i][1]
     tag_name = index_tag[tag]
     percent = round(tag_count[i][0] / elig_reports * 100, 0)
     print(percent, '% of reports contain tag',tag_name)
-    
+ 
 # processing time
 print('time elapsed - ', datetime.datetime.now() - time_start)    
             

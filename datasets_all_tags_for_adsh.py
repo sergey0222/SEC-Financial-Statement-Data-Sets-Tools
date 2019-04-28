@@ -1,4 +1,4 @@
-# lists all tags used in a given adsh
+# lists all tags used in a given adsh with corresponding values
 
 import datetime
 import csv
@@ -15,10 +15,7 @@ time_start = datetime.datetime.now()
 path = 'D:/DataSets/'
 
 # we are looking for all the tags for this adsh (given as int)
-adsh_int = 23200 
-
-# and also print out all of these tags appearances
-tag_int = 248
+adsh_int = 23189 
 
 # initialize tags list
 tag_list = []
@@ -34,14 +31,14 @@ with open(path + 'filter_1/filter_1_num.txt') as f:
 
             # check if current record is for a given adsh
             if int(row[0]) == adsh_int:
-                # if yes, add original string version of tag to the list               
-                tag_list.append(index_tag[int(row[1])])
-                if int(row[1]) == tag_int:
-                    print(row)
+                               
+                tag_name = index_tag[int(row[1])]
+                tag_value = row[7]
+                tag_list.append([tag_name,tag_value])
 
 print('Number of different tags for this adsh is:', len(tag_list))
 ds.list_to_file(tag_list, path + 'other/all_tags_for_adsh.txt')
-print(tag_list[0:20])
+print(tag_list)
 # processing time
 print('time elapsed - ', datetime.datetime.now() - time_start)    
             

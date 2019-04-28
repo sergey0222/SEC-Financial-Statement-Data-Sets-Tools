@@ -12,7 +12,7 @@ time_start = datetime.datetime.now()
 path = 'D:/DataSets/'
 
 # we are looking for this adsh
-adsh_int = 25681 
+adsh_int = 23189 
 
 index_adsh = ds.list_from_file(path + 'reindexed/index_adsh.txt') 
 index_cik = ds.list_from_file(path + 'reindexed/index_cik.txt')

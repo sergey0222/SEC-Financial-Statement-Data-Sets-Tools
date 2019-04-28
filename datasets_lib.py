@@ -1,5 +1,5 @@
 # Library of commonly used functions
-# v1.00
+
 import csv
 
 def index_by_tree (string, dictionary, next_available_index):
